@@ -398,9 +398,9 @@ See [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Project
 To read in the files that were downloaded from the various sources as indicated in the table above, we will use the `read_xlsx()` and `read_xls()` functions of the `readxl` package to import the data from the `.xlsx` and `.xls` files, respectively. We will also use the `here()` function of the `here` package to more easily specify the path to our files relative to the directory where the .Rproj file is located. 
 
 ```{r, eval=FALSE}
-CO2_emissions <- readxl::read_xlsx(here("data","raw", "yearly_co2_emissions_1000_tonnes.xlsx"))
-gdp_growth    <- readxl::read_xlsx(here("data", "raw", "gdp_per_capita_yearly_growth.xlsx"))
-energy_use    <- readxl::read_xlsx(here("data", "raw", "energy_use_per_person.xlsx"))
+CO2_emissions <- readxl::read_xlsx(here("www","data","raw", "yearly_co2_emissions_1000_tonnes.xlsx"))
+gdp_growth    <- readxl::read_xlsx(here("www","data", "raw", "gdp_per_capita_yearly_growth.xlsx"))
+energy_use    <- readxl::read_xlsx(here("www","data", "raw", "energy_use_per_person.xlsx"))
 ```
 
 ```{r, echo=FALSE}
@@ -424,7 +424,7 @@ knitr::include_graphics("www/img/Disasters.png")
 To do this, we can skip rows using the `skip = 2` argument of the `read_csv()` function. 
 
 ```{r, eval=FALSE}
-us_disaster <- readr::read_csv(here("data", "raw", "disasters.csv"), skip = 2)
+us_disaster <- readr::read_csv(here("www", "data", "raw", "disasters.csv"), skip = 2)
 ```
 
 ```{r, echo=FALSE}
@@ -454,7 +454,7 @@ A variable that is a factor has a set of particular values called levels (this c
 ***
 
 ```{r, eval=FALSE}
-us_temperature <- readr::read_csv(here("data", "raw", "temperature.csv"), skip = 4, na = "-99")
+us_temperature <- readr::read_csv(here("www", "data", "raw", "temperature.csv"), skip = 4, na = "-99")
 ```
 
 ```{r, echo=FALSE}
@@ -473,14 +473,14 @@ save(CO2_emissions,
      energy_use, 
      us_disaster, 
      us_temperature, 
-     file = here::here("data", "imported", "co2_data_imported.rda"))
+     file = here::here("www", "data", "imported", "co2_data_imported.rda"))
 ```
 
 # **Data Wrangling**
 *** 
 If you have been following along but stopped, we could load our imported data like so:
 ```{r, eval=FALSE}
-load(here::here("data", "imported", "co2_data_imported.rda"))
+load(here::here("www","data", "imported", "co2_data_imported.rda"))
 ```
 
 ```{r, echo=FALSE}
@@ -493,7 +493,7 @@ load("www/data/imported/co2_data_imported.rda")
 An RDA file (stands for R data) of the data can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/imported) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/imported/co2_data_imported.rda). Download this file and then place it in your current working directory within a subdirectory called "imported" within a directory called "data" to copy and paste our code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
 
 ```{r, eval=FALSE}
-load(here::here("data", "imported", "co2_data_imported.rda"))
+load(here::here("www","data", "imported", "co2_data_imported.rda"))
 ```
 
 ***
@@ -1417,8 +1417,8 @@ data_long %>%
 To allow users to skip import and wrangling we will save the data as an RDA file as well as a CSV file as this is often useful to send our data to collaborators. We will save this in a "wrangled" subdirectory of our "data" directory of our working directory.
 
 ```{r, eval = FALSE}
-save(data_long, file = here::here("data", "wrangled", "wrangled_data.rda"))
-readr::write_csv(data_long, path = here::here("data","wrangled", "wrangled_data.csv"))
+save(data_long, file = here::here("www","data", "wrangled", "wrangled_data.rda"))
+readr::write_csv(data_long, path = here::here("www","data","wrangled", "wrangled_data.csv"))
 ```
 
 ## **Exercise**
@@ -1585,7 +1585,7 @@ grade_code()
 If you have been following along but stopped, we could load our imported data like so:
 
 ```{r, eval=FALSE}
-load(here::here("data", "wrangled", "wrangled_data.rda"))
+load(here::here("www","data", "wrangled", "wrangled_data.rda"))
 ```
 
 ```{r, echo=FALSE}
@@ -1598,7 +1598,7 @@ load("www/data/wrangled/wrangled_data.rda")
 An RDA file (stands for R data) of the data can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/wrangled) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled/wrangled_data.rda). Download this file and then place it in your current working directory within a subdirectory called "wrangled" within a subdirectory called "data" to copy and paste our code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
 
 ```{r, eval=FALSE}
-load(here::here("data", "wrangled", "wrangled_data.rda"))
+load(here::here("www","data", "wrangled", "wrangled_data.rda"))
 ```
 
 
@@ -2494,8 +2494,8 @@ Let's save this data as an rda file for future use and as a csv file, as this is
 We will save this in a "wrangled" subdirectory of our "data" directory of our working directory.
 
 ```{r, eval = FALSE}
-save(wide_US, file = here::here("data", "wrangled", "wrangled_US_data.rda"))
-readr::write_csv(wide_US, path = here::here("data", "wrangled", "wrangled_US_data.csv"))
+save(wide_US, file = here::here("www","data", "wrangled", "wrangled_US_data.rda"))
+readr::write_csv(wide_US, path = here::here("www","data", "wrangled", "wrangled_US_data.csv"))
 ```
 
 Now we can specify which indicators we want to look at, so now we can specifically look at emissions and temperature.
@@ -2646,7 +2646,7 @@ weight %>%
 If you are following along and stopped you could load the data you will need like so:
 
 ```{r, eval=FALSE}
-load(here::here("data", "wrangled", "wrangled_US_data.rda"))
+load(here::here("www","data", "wrangled", "wrangled_US_data.rda"))
 ```
 
 ```{r, echo=FALSE}
@@ -2659,7 +2659,7 @@ load("www/data/wrangled/wrangled_US_data.rda")
 An RDA file (stands for R data) of the data (called `wrangled_US_data.rda`) can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/wrangled) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled/wrangled_US_data.rda). Download this file and then place it in your current working directory within a subdirectory called "wrangled" within a subdirectory called "data" to copy and paste our code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
 
 ```{r, eval=FALSE}
-load(here::here("data", "wrangled", "wrangled_US_data.rda"))
+load(here::here("www","data", "wrangled", "wrangled_US_data.rda"))
 ```
 
 
