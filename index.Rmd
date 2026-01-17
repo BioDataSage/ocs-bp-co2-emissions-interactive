@@ -529,8 +529,13 @@ First, let's take a look at the CO2 data (`CO2_emissions`).
 We can use the `slice_head()` function of the `dplyr` package to see just the first rows of our data. 
 We can specify how many rows we would like to see by using the `n =` argument. 
 
+
 We will use the `%>%` pipe from the `dplyr` package, which can be used to define the input for later sequential steps. 
-This will make more sense when we have multiple sequential steps using the same data object. 
+This allows us to use our `CO2_emissions` data and modify it sequentially using  multiple steps. We will start with just one step however, but we will see the utility of this soon where we will have multiple steps each having a %>% at the end into the next step. We can think of this as a "take this data and then" statement". 
+
+The `<-` assignment operator can as usual be used to reassign the object to the modified version after all the steps after the `%>%` are completed. 
+
+Let's modify `CO2_emissions` to make it more usable for making visualizations. 
 
 ```{r}
 CO2_emissions %>%
@@ -664,9 +669,11 @@ dim(CO2_emissions)
 
 Let's say we also want to rename the `country` variable to be capitalized.
 To do this, we can use the `rename()` function of the `dplyr` package to rename this variable. 
-When renaming variables the syntax is `new-name = old-name`, where the new name is listed first before the `=`. 
+When renaming variables the syntax is `new-name = old-name`, where the new name is listed first before the `=`.
  
 You may also note that the `Year` variable is currently of class type character. We would like to change it to be numeric. To do this we will use the `mutate()` function, which is also part of the `dplyr` package. This function allows us to create and modify variables. We will also use this function to create a variable called `Label` which will have `"CO2 Emissions (Metric Tons)"` as the value for every row, to be used when we create plots later.
+
+Note that here we are now using multiple steps with our `%>%` pipe operator. So the CO2_emissions data is used to rename Contry to country and then the out put of this is taken to be mutated to have Year as a numeric variable.
 
 
 ```{r}
