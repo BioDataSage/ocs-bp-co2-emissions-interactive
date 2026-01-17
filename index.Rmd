@@ -1475,6 +1475,10 @@ wide_format %>%
   pivot_longer(cols = -ID, names_to = "Variable", values_to = "Value")
 ```
 
+```{r DW_Exercise1-check, eval=FALSE}
+grade_code()
+```
+
 ####
 
 <p>&nbsp;</p>
@@ -2627,6 +2631,10 @@ weight %>%
   ggplot(aes(x = Time_day, y = Weight_lb, color = ID)) +
   geom_line() +
   labs(title = "Weight Change")
+```
+
+```{r DV_Exercise1-check, eval=FALSE}
+grade_code()
 ```
 
 ####
