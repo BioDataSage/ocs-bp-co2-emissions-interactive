@@ -2490,7 +2490,7 @@ Let's save this data as an rda file for future use and as a csv file, as this is
 We will save this in a "wrangled" subdirectory of our "data" directory of our working directory.
 
 ```{r, eval = FALSE}
-save(wide_US, file = here::here("www","data", "wrangled", "wrangled_US_data.rda"))
+save(wide_US, file = here::here("www", "data", "wrangled", "wrangled_US_data.rda"))
 readr::write_csv(wide_US, path = here::here("www","data", "wrangled", "wrangled_US_data.csv"))
 ```
 
