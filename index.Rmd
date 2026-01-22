@@ -1475,8 +1475,11 @@ wide_format %>%
   pivot_longer(cols = -ID, names_to = "Variable", values_to = "Value")
 ```
 
-```{r DW_Exercise1-check, eval=FALSE}
-grade_code()
+```{r DW_Exercise1-check}
+grade_this_code(
+  correct = "Good work!",
+  incorrect = "Not quite. {random_encouragement()}"
+)
 ```
 
 ####
@@ -1574,8 +1577,11 @@ new.mtcars <- mtcars %>%
 new.mtcars
 ```
 
-```{r DW_Exercise2-check, eval=FALSE}
-grade_code()
+```{r DW_Exercise2-check}
+grade_this_code(
+  correct = "Good work!",
+  incorrect = "Not quite. {random_encouragement()}"
+)
 ```
 
 ####
@@ -2633,8 +2639,11 @@ weight %>%
   labs(title = "Weight Change")
 ```
 
-```{r DV_Exercise1-check, eval=FALSE}
-grade_code()
+```{r DV_Exercise1-check}
+grade_this_code(
+  correct = "Good work!",
+  incorrect = "Not quite. {random_encouragement()}"
+)
 ```
 
 ####
